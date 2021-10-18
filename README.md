@@ -1,6 +1,6 @@
-# news_mark1
+# Identifying Partisan News Bias
 
-A new Flutter project.
+A Flutter project with machine learning capabilites.
 
 ## Getting Started
 
