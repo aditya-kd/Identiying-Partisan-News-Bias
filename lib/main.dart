@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_mark1/colors.dart';
+import 'package:news_mark1/request.dart';
 import 'package:news_mark1/theme.dart';
 
 void main() {
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: [
             IconButton(
                 onPressed: () {
-                  print('Settings Tapped');
+                  print('Settings Tapped'); 
                 },
                 icon: Icon(Icons.settings))
           ],
@@ -91,9 +92,22 @@ class _MyHomePageState extends State<MyHomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10.0)))),
-                    onPressed: () {
-                      print('Searched for: ${searchController.text}');
-                    },
+                    onPressed: () async {
+                      print('Search Query submitted:'+searchController.text);
+                      // Navigator.push(context, MaterialPageRoute(builder: ))
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(searchQuery: searchController.text ),
+                ));
+              
+                
+          // var parsed = jsonDecode(data);
+          // String printableData=makePrintableData(data);
+          // setState(() {
+          //   displayText = "" + printableData;
+          // });  
+        },
                     child: Text(
                       'Search',
                       style: TextStyle(fontSize: 16),
@@ -101,4 +115,54 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             )));
   }
+  String makePrintableData(data) {
+  //do the processing to remove unwanted JSON stuff
+  
+  return data;
 }
+
+}
+class HomeScreen extends StatefulWidget {
+  const HomeScreen ({Key? key, required this.searchQuery}) : super(key: key);
+  final String searchQuery;
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String printableData='No Data till now';
+
+  Future loadNews() async{
+    var data =
+               await fetchData('http://10.0.2.2:5000/api?query=' + widget.searchQuery);
+    //           //await fetchData('http://127.0.0.1:5000/api?query=' +searchQuery);
+          // var data =
+          //      await fetchData('https://jsonplaceholder.typicode.com/albums/1');
+          print('data recieved ,{$data}');
+          setState(() {
+            printableData=data;
+          });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    loadNews();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home Screen"),
+      ),
+      body: Center(
+        child: Column(children: [
+          Row(children: [Text(widget.searchQuery), ],),
+          printableData.isEmpty?Text(printableData):Center(child: Text(printableData))
+
+          
+        ],)
+      ),
+    );
+  }
+}
+
