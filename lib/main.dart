@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_mark1/colors.dart';
-import 'package:news_mark1/request.dart';
+import 'package:news_mark1/secondScreen.dart';
 import 'package:news_mark1/theme.dart';
 
 void main() {
@@ -121,48 +121,5 @@ class _MyHomePageState extends State<MyHomePage> {
   return data;
 }
 
-}
-class HomeScreen extends StatefulWidget {
-  const HomeScreen ({Key? key, required this.searchQuery}) : super(key: key);
-  final String searchQuery;
-
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  String printableData='No Data till now';
-
-  Future loadNews() async{
-    var data =
-               await fetchData('http://10.0.2.2:5000/api?query=' + widget.searchQuery);
-    //           //await fetchData('http://127.0.0.1:5000/api?query=' +searchQuery);
-          // var data =
-          //      await fetchData('https://jsonplaceholder.typicode.com/albums/1');
-          print('data recieved ,{$data}');
-          setState(() {
-            printableData=data;
-          });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    loadNews();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Home Screen"),
-      ),
-      body: Center(
-        child: Column(children: [
-          Row(children: [Text(widget.searchQuery), ],),
-          printableData.isEmpty?Text(printableData):Center(child: Text(printableData))
-
-          
-        ],)
-      ),
-    );
-  }
 }
 

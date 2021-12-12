@@ -30,6 +30,5 @@ def gaurdianAPI(query):
     print(str(json_res['response']['results'][0]))
     return str(json_res['response']['results'][0])
 
-
 if __name__ == '__main___':
     app.run()
