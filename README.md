@@ -1,5 +1,6 @@
 # Identifying Partisan News Bias
 
+Group - 3B02 (Aditya Kumar Sharma, Amit Gupta, Anubhav Bajpai)
 A Flutter project with machine learning capabilites.
 
 ## Getting Started
