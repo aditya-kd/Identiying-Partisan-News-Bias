@@ -1,17 +1,24 @@
 # Identifying Partisan News Bias
 
-Group - 3B02 (Aditya Kumar Sharma, Amit Gupta, Anubhav Bajpai)
-A Flutter project with machine learning capabilites.
+Group - 3B02 (Aditya Kumar Sharma, Amit Gupta)
+
+Mobile Application to identify partisan(political) news bias.
+Users can search for different topics and read the news, which
+is also analyzed for its biasedness( liberal, conservative) using
+a machine learning model.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a Flutter application.
+## Frameworks used
+- Numpy, ScikitLearn, Tensorflow, Matplotlib etc.
+- Flutter and material package
 
-A few resources to get you started if this is your first Flutter project:
+## Main Components
+- `RNN Model` in python to identify bias and return two scores [liberal and conservative]
+- `Python script` to fetch the news from various sites and store.
+- `Text Summarizer` to converge all articles into one.
+- `Flutter application` for user interface and displaying results.
+- `Flask server` to coordinate requests from the app and pass the loaded articles to the model and returning the results.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
