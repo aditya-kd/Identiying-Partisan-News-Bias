@@ -22,3 +22,4 @@ This project is a Flutter application.
 - `Flask server` to coordinate requests from the app and pass the loaded articles to the model and returning the results.
 
 
+![alt text](https://github.com/aditya-kd/Identiying-Partisan-News-Bias/blob/master/Greeting%20Page.png)  ![alt text](https://github.com/aditya-kd/Identiying-Partisan-News-Bias/blob/master/iPhone%2013%20Pro%20Max%20-%201%20(1).jpg)
